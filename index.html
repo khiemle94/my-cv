@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, height=device-height"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/javascript.js"></script>
+    <script src="js/animation.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Page Title</title>
+    <script>
+      window.onload = async function() {
+        if (screen.width <= 500) {
+          this.numCircles = 50;
+        }
+        canvas = document.getElementById("background");
+        context = canvas.getContext("2d");
+
+        canvas.width = $(window).width();
+        canvas.height = $(window).height();
+        buildArray();
+        animate();
+
+        getLoadingText();
+        await hiddenLoader(1.5);
+        await loadingTextAnimate();
+      };
+    </script>
+  </head>
+  <body>
+    <div id="loader">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <canvas id="background"></canvas>
+    <div id="wrapper">
+      <div id="cv-form">
+        <section id="persional-info" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text">Name:</div>
+            <div class="content col loading-text">Le Trong Khiem</div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="col col-5">
+              <div class="title">
+                <i class="fa fa-envelope loading-text" aria-hidden="true"></i>
+              </div>
+              <div class="content loading-text">letrongkhiem94@gmail.com</div>
+            </div>
+            <div class="col col-3">
+              <div class="title">
+                <i class="fa fa-phone loading-text" aria-hidden="true"></i>
+              </div>
+              <div class="content loading-text">0976332937</div>
+            </div>
+            <div class="col col-3">
+              <div class="title">
+                <i class="fa fa-map-marker loading-text" aria-hidden="true"></i>
+              </div>
+              <div class="content loading-text">Da Nang, Viet Nam</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="objective" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text">Objective</div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="content col loading-text">
+              About myself, love technology and passion for coding and creative.
+              My objective is become Full-stack developer, a professional
+              developer in Web application more than become a engineer in
+              machine learning. Working in active environments with many
+              precious opportunities for career advancement.
+            </div>
+          </div>
+          <div class="row uppercase padding-top-20 loading-text">
+            <div class="title col">Tech stask</div>
+          </div>
+          <div class="list-item row">
+            <div class="item loading-text">
+              - HTML 5, CSS 3, ES 5, ES 6.
+            </div>
+            <div class="item loading-text">
+              - Nodejs, express JS.
+            </div>
+            <div class="item loading-text">
+              - ReactJS, Material-UI.
+            </div>
+            <div class="item loading-text">
+              - MongoDB, Redis, GrapQL, Elasticsearch.
+            </div>
+            <div class="item loading-text">
+              - Docker(Personal hub with NodeJS, Nginx images).
+            </div>
+          </div>
+        </section>
+        <section id="education" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text">Education</div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  Duy Tan University
+                </div>
+                <div class="row information-sumary-time loading-text">
+                  Oct 2013 - Jan 2016
+                </div>
+              </div>
+              <div class="col col-6 information-description">
+                <div class="information-description-title loading-text">
+                  Major: Software engineering
+                </div>
+                <div class="information-description-content loading-text">
+                  GPA: 3.0/4.0
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="work-experience" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text loading-text">
+              Work Experience
+            </div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  FPT software DaNang
+                </div>
+                <div class="row information-sumary-time loading-text">
+                  Dec 2015 - Jan 2016
+                </div>
+              </div>
+              <div class="col col-7 information-description">
+                <div class="information-description-title loading-text">
+                  Internship
+                </div>
+                <div class="list-item row">
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Web programming using C# programming languages, building
+                    simple website about the insurance model using MVC model.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Knowledge of advanced SQL.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Experience in software development process, especially
+                    Waterfall
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  SDC Company Da Nang
+                </div>
+                <div class="row information-sumary-time loading-text">
+                  Mar 2016 - Apr 2016
+                </div>
+              </div>
+              <div class="col col-7 information-description">
+                <div class="information-description-title loading-text">
+                  Trial work
+                </div>
+                <div class="list-item row">
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Create a Universal application with MVVM framework. The
+                    application is used in setting appointments between patients
+                    and doctors, management of medical appointments, patient
+                    information, etc.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Experience in the model scrum.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="information">
+            <div class="col col-4 information-sumary">
+              <div class="row information-sumary-name loading-text">
+                FPT software DaNang
+              </div>
+              <div class="row information-sumary-time loading-text">
+                Jun 2016 - Oct 2018
+              </div>
+            </div>
+            <div class="col col-7 information-description">
+              <div class="information-description-title loading-text">
+                Java Development
+              </div>
+              <div class="list-item row">
+                <div class="item loading-text information-description-content">
+                  Fresher
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Web programming using java programming languages, building
+                  websites based on struts 1 is successfull.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Learn about working procedures at FPT.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Learn more about soft skill.
+                </div>
+                <div class="item loading-text information-description-content">
+                  Kinyu 2 Projects
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Create a mock project with spring.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Create some page web with HTML/CSS/JS.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Create VBA according to customer requirements and increase
+                  productivity for the task.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Implement web for DIR Bank in Japan by struts 1.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Developing automatic test tool by selenium and C# winform.
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Create test script for automation test with vba tool of
+                  customer
+                </div>
+                <div class="item loading-text information-description-content">
+                  Kinyu 3 Projects
+                </div>
+                <div class="item loading-text information-description-content">
+                  - Create product using spring framework in back-end and
+                  angularJS 1 in front-end.
+                </div>
+              </div>
+            </div>
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  Isentia VietNam
+                </div>
+                <div class="row information-sumary-time loading-text">
+                  Nov 2018 - Now
+                </div>
+              </div>
+              <div class="col col-7 information-description">
+                <div class="information-description-title loading-text">
+                  JS Development
+                </div>
+                <div class="list-item row">
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    Crawler Projects
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    I'm a development in Crawler Team. We built a platform allow
+                    listen all response from user onalmost channels such as:
+                    Social (Facebook, Youtube, ...), Forum, News, ... To serve a
+                    hundred millionrequests per days, store a gigabyte data per
+                    hour, we use some techniques:
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Elasticsearch: We store almost data on this engine. With
+                    ability to scale up data per day, justbegin with a minimum
+                    equipment, with flexible format (JSON), we could solve our
+                    problem -store terabytes of data, distributed search and
+                    analytics data (message of user)
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - MongoDB: We need a hidden layer to store config and data
+                    before push to Elasticsearch
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Docker: One environment for development, testing and
+                    production. We can serve a platformrun on NodeJS v0.12.x and
+                    v8.x on one server. And we can scale apps up with a file -
+                    dockercompose.yml
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Nginx: A reverse proxy. Serve HTML site, React application
+                    and load balancing
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    User Hub Projects
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    Using ReactJS and Material-UI to built manage user system.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - In Backend, using NodeJS v8.x, jsonwebtoken, node-acl to
+                    manage user, authenticate user by roles and action. User
+                    just can use token to access some api be allow.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - In Frontend, using Material-UI as platform to build user
+                    dashboard, custom and create some components
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  Freelance
+                </div>
+                <div class="row information-sumary-time loading-text"></div>
+              </div>
+              <div class="col col-7 information-description">
+                <div class="information-description-title loading-text">
+                  Project outside
+                </div>
+                <div class="list-item row">
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Create two static websites with HTML/CSS/JQUERY/BOOTSTRAP
+                    and responsive.
+                  </div>
+                  <div
+                    class="item loading-text information-description-content"
+                  >
+                    - Create a mock project is a chatting web realtime using
+                    Angular 2, NodeJS, socket.io
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="awards" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text">awards</div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="information">
+              <div class="col col-4 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  2014 - 2015
+                </div>
+              </div>
+              <div class="col col-7 information-description">
+                <div class="loading-text">
+                  - Innovation Cup (Dec 2014). Consolation prizes.
+                </div>
+                <div class=" loading-text">
+                  - Research Scientist (Apr 2015). Research scientist
+                  certificate.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="hobbies" class="flex-container">
+          <div class="row uppercase">
+            <div class="title col loading-text">hobbies</div>
+          </div>
+          <div class="row padding-top-20">
+            <div class="information">
+              <div class="col col-12 information-sumary">
+                <div class="row information-sumary-name loading-text">
+                  - Researching technology in free time.
+                </div>
+                <div class="row information-sumary-name loading-text">
+                  - Swimming, play soccer.
+                </div>
+                <div class="row information-sumary-name loading-text">
+                  - Play guitar, listen music.
+                </div>
+                <div class="row information-sumary-name loading-text">
+                  - Play game moba.
+                </div>
+                <div class="row information-sumary-name loading-text">
+                  - Create tool for my job to be simply with vba, autoit, regex.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
